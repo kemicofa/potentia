@@ -4,7 +4,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        lichking: "url('/lichking.jpg')",
+        lichking: `
+          linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url('/lichking.jpg')
+        `,
       },
       animation: {
         'pulse-ts': 'pulse-ts 5s infinite'

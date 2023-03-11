@@ -1,9 +1,17 @@
 import * as React from "react";
+import Snow from "../components/snow.client.tsx";
+import { ClientOnly } from "remix-utils";
 
 export default function Index() {
+  const snowRef = React.useRef<HTMLDivElement>(null);
   return (
-    <div className="w-screen h-screen bg-lichking flex justify-center items-center bg-cover bg-center bg-no-repeat bg-gradient-to-b">
-      <div className="flex flex-col justify-center items-center">
+    <div className="relative w-screen h-screen bg-lichking flex justify-center items-center bg-cover bg-center bg-no-repeat bg-gradient-to-b">
+      <div className="z-10 absolute top-0 left-0 overflow-hidden" ref={snowRef}>
+        <ClientOnly fallback={null}>
+          {() => <Snow/>}
+        </ClientOnly>
+      </div>
+      <div className="z-20 flex flex-col justify-center items-center">
         <h1 className='font-title font-black text-6xl md:text-9xl animate-pulse-ts'>Potentia</h1>
         <p className="mt-8 text-xl md:text-3xl text-center text-slate-300">
           "Coming together is a beginning. Keeping together is progress. Working together is success."

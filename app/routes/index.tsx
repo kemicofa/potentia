@@ -17,10 +17,10 @@ export default function Index() {
           "Coming together is a beginning. Keeping together is progress. Working together is success."
         </p>
         <p className="mt-8 text-xl md:text-3xl text-slate-300">Earthshaker - Alliance</p>
-        <button className="mt-8 rounded px-4 md:px-6 py-2 md:py-3 bg-orange-900 text-slate-300 flex items-center md:text-xl">
+        <a href="discord://discord.com/invite/THzhSx3Meh" target="_blank" className="mt-8 rounded px-4 md:px-6 py-2 md:py-3 bg-orange-900 text-slate-300 flex items-center md:text-xl">
           <img src="/discord-50.png" alt="discord icon" className='w-6 mr-4 md:w-8 invert'/>
           Apply today
-        </button>
+        </a>
       </div>
     </div>
   );

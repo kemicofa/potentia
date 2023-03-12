@@ -3,7 +3,7 @@ import Snow from "../components/snow.client.tsx";
 import { ClientOnly } from "remix-utils";
 import Audio from "../components/audio.client.tsx";
 
-const DISCORD_LINK_APP = 'https://discordapp.com/THzhSx3Meh';
+const DISCORD_LINK_APP = 'https://discordapp.com/invite/THzhSx3Meh';
 
 export default function Index() {
   const snowRef = React.useRef<HTMLDivElement>(null);

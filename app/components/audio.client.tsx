@@ -37,8 +37,8 @@ const AudioPlayer = () => {
     }
 
     return <div>
-        <button onClick={toggleMusic}>
-            <img className="w-4" src={ playing ? "/volume.png" : "/mute.png"} alt="unmute or mute music"/>
+        <button onClick={toggleMusic} className="opacity-25 hover:opacity-100">
+            <img className="w-4" src={ playing ? "/pause.png" : "/play.png"} alt="unmute or mute music"/>
         </button>
     </div>
 }

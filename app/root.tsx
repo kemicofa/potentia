@@ -22,7 +22,7 @@ export const meta: MetaFunction = () => ({
   title: "Potentia",
   viewport: "width=device-width,initial-scale=1",
   description,
-  keywords: "world of warcraft, wow, wrath of the lich king, raiding guild, pve, pvp, earthshaker alliance, ulduar, ulduar 25m, ulduar 10m, recruiting",
+  keywords: "potentia, world of warcraft, wow, wrath of the lich king clasic, raiding guild, pve, pvp, earthshaker alliance, ulduar, ulduar 25m, ulduar 10m, recruiting, eu",
   "og:title": title,
   "og:type": 'website',
   "og:url": "https://potentia.deno.dev",

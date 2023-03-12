@@ -1,15 +1,11 @@
 import * as THREE from 'three';
 
-const SNOW_INITIAL_Y_POSITION = 10;
-const SNOW_PARTICLE_RADIUS = 1/100;
+const SNOW_PARTICLE_RADIUS = 1/70;
 const SNOW_PARTICLE_FALL_SPEED = -0.01;
 
-const MIN_SNOW_PARTICLES_TO_SPAWN = 10;
-const MAX_SNOW_PARTICLES_TO_SPAWN = 100;
+const getRandomWindBias = (elapsed: number) => Math.sin(elapsed * 0.3) * 0.05;
 
 const getRandomNumber = (min: number, max: number) =>  Math.random() * (max - min) + min;
-
-const getRandomSnowParticlesToSpawn = () => getRandomNumber(MIN_SNOW_PARTICLES_TO_SPAWN, MAX_SNOW_PARTICLES_TO_SPAWN);
 
 const buildSnowParticle = (radius: number) => {
     const geometry = new THREE.CircleGeometry(radius);
@@ -22,8 +18,8 @@ const spawnSnowParticles = (count: number) => {
 
     for(let i = 0; i < count; i++) {
         const particle = buildSnowParticle(SNOW_PARTICLE_RADIUS);
-        particle.position.y = SNOW_INITIAL_Y_POSITION;
-        particle.position.x = getRandomNumber(-10, 10);
+        particle.position.y = getRandomNumber(-10, 10);
+        particle.position.x = getRandomNumber(-30, 10);
         particle.position.z = getRandomNumber(-10, 0)
         particles.push(particle);
     }
@@ -39,38 +35,28 @@ export const initSnowSystem = (parent: HTMLElement): void => {
     renderer.setSize( window.innerWidth, window.innerHeight );
     parent.appendChild( renderer.domElement );
 
-    const snowParticles: THREE.Mesh[] = [];
+    const snowParticles: THREE.Mesh[] = spawnSnowParticles(2000);
+    scene.add(...snowParticles);
 
     camera.position.z = 5;
 
-
     const clock = new THREE.Clock();
     let elapsed = 0;
-    let delta = 0;
-    let time = 0;
-
-    function shouldSpawnParticles() {
-        return time > 1 && Math.floor(time) % 2 === 0;
-    }
+    let windBias = 0;
 
     function update() {
-        if(shouldSpawnParticles()) {
-            time = 0;
-            const numberOfSnowParticlesToSpawn = getRandomSnowParticlesToSpawn();
-            const newSnowParticles = spawnSnowParticles(numberOfSnowParticlesToSpawn);
-            snowParticles.push(...newSnowParticles);
-            scene.add(...newSnowParticles);
-        }
-
+        windBias = getRandomWindBias(elapsed);
         for(const snowParticle of snowParticles) {
-            snowParticle.translateY(SNOW_PARTICLE_FALL_SPEED);
+            if(snowParticle.position.y < -10) {
+                snowParticle.position.y = 10;
+            }
+            snowParticle.translateX(windBias + getRandomNumber(-0.005, 0.005));
+            snowParticle.translateY(SNOW_PARTICLE_FALL_SPEED + getRandomNumber(-0.005, 0.005));
         }
     }
 
     function animate() {
         requestAnimationFrame( animate );
-        delta = clock.getDelta();
-        time += delta;
         elapsed = clock.getElapsedTime();
         update();
         renderer.render( scene, camera );

@@ -3,9 +3,29 @@ import Snow from "../components/snow.client.tsx";
 import { ClientOnly } from "remix-utils";
 import Audio from "../components/audio.client.tsx";
 
+const DISCORD_LINK_APP = 'discord://discord.com/invite/THzhSx3Meh';
+const DISCORD_LINK_WEB = 'https://discord.gg/THzhSx3Meh';
+
 export default function Index() {
   const snowRef = React.useRef<HTMLDivElement>(null);
+  const [discordLink, setDiscordLink] = React.useState<string>('')
+  React.useEffect(() => {
+    if(discordLink !== '') {
+      return;
+    }
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    iframe.setAttribute('src', DISCORD_LINK_APP); 
 
+    try {
+        setDiscordLink(iframe.contentDocument ? DISCORD_LINK_APP : DISCORD_LINK_WEB);
+    } catch (e) {
+        setDiscordLink(DISCORD_LINK_WEB);
+    }
+
+    document.body.removeChild(iframe);
+  }, [discordLink])
 
   return (
     <div className="relative w-screen h-screen bg-lichking flex justify-center items-center bg-cover bg-center bg-no-repeat bg-gradient-to-b">
@@ -25,7 +45,7 @@ export default function Index() {
           "Coming together is a beginning. Keeping together is progress. Working together is success."
         </p>
         <p className="mt-8 md:text-xl text-slate-300"><span>EU</span> ● <span>Earthshaker</span> ● <span>Alliance</span></p>
-        <a href="discord://discord.com/invite/THzhSx3Meh" target="_blank" className="mt-10 rounded px-4 md:px-6 py-2 md:py-3 bg-discord-purple text-slate-300 flex items-center md:text-xl">
+        <a href={discordLink} target="_blank" className="mt-10 rounded px-4 md:px-6 py-2 md:py-3 bg-discord-purple text-slate-300 flex items-center md:text-xl">
           <img src="/discord-50.png" alt="discord icon" className='w-6 mr-4 md:w-8 invert'/>
           Apply today
         </a>

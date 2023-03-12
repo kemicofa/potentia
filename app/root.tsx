@@ -13,10 +13,23 @@ import stylesheet from "./tailwind.css";
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
+
+const title = "Potentia"
+const description = "Raiding guild on EU Earthshaker Alliance recruiting players for 10m and 25m Ulduar.";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Potentia",
   viewport: "width=device-width,initial-scale=1",
+  description,
+  keywords: "world of warcraft, wow, wrath of the lich king, raiding guild, pve, pvp, earthshaker alliance, ulduar, ulduar 25m, ulduar 10m, recruiting",
+  "og:title": title,
+  "og:type": 'website',
+  "og:url": "https://potentia.deno.dev",
+  "og:image": "https://potentia.deno.dev/logo.jpg",
+  "og:description": description,
+  "og:locale": "en_GB",
+  "og:site_name": title
 });
 
 export default function App() {

@@ -3,6 +3,9 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        'discord-purple': '#6A5ACD'
+      },
       backgroundImage: {
         lichking: `
           linear-gradient(

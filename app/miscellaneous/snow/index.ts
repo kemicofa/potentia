@@ -19,7 +19,7 @@ const spawnSnowParticles = (count: number) => {
     for(let i = 0; i < count; i++) {
         const particle = buildSnowParticle(SNOW_PARTICLE_RADIUS);
         particle.position.y = getRandomNumber(-10, 10);
-        particle.position.x = getRandomNumber(-30, 10);
+        particle.position.x = getRandomNumber(-30, 30);
         particle.position.z = getRandomNumber(-10, 0)
         particles.push(particle);
     }

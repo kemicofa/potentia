@@ -13,7 +13,7 @@ module.exports = {
         `,
       },
       animation: {
-        'pulse-ts': 'pulse-ts 5s infinite'
+        'pulse-ts': 'pulse-ts 10s infinite'
       },
       keyframes: {
         'pulse-ts': {

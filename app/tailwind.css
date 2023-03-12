@@ -4,6 +4,9 @@
 
 @layer utilities {
     @variants responsive {
+        .text-shadow-blue {
+          text-shadow: 0 0 5px blue;
+        }
         .text-shadow {
           text-shadow: 0 0 4px white;
         }

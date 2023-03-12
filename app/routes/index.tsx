@@ -20,7 +20,7 @@ export default function Index() {
         </ClientOnly>
       </div>
       <div className="z-20 flex flex-col justify-center items-center">
-        <h1 className='font-title font-black text-6xl md:text-9xl animate-pulse-ts'>Potentia</h1>
+        <h1 className='font-title font-black text-6xl md:text-9xl animate-pulse-ts text-shadow-blue'>Potentia</h1>
         <p className="mt-8 text-xl md:text-3xl text-center text-slate-300">
           "Coming together is a beginning. Keeping together is progress. Working together is success."
         </p>

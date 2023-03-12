@@ -1,11 +1,19 @@
 import * as React from "react";
 import Snow from "../components/snow.client.tsx";
 import { ClientOnly } from "remix-utils";
+import Audio from "../components/audio.client.tsx";
 
 export default function Index() {
   const snowRef = React.useRef<HTMLDivElement>(null);
+
+
   return (
     <div className="relative w-screen h-screen bg-lichking flex justify-center items-center bg-cover bg-center bg-no-repeat bg-gradient-to-b">
+      <div className="absolute top-2 left-2 z-20">
+        <ClientOnly fallback={null}>
+          {() => <Audio/>}
+        </ClientOnly>
+      </div>
       <div className="z-10 absolute top-0 left-0 overflow-hidden" ref={snowRef}>
         <ClientOnly fallback={null}>
           {() => <Snow/>}

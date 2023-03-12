@@ -21,7 +21,7 @@ module.exports = {
       keyframes: {
         'pulse-ts': {
           '50%': {
-            'text-shadow': '0 0 30px blue'
+            'text-shadow': '0 0 30px #0088FF'
           }
         }
       }

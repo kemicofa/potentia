@@ -19,7 +19,7 @@ const spawnSnowParticles = (count: number) => {
     for(let i = 0; i < count; i++) {
         const particle = buildSnowParticle(SNOW_PARTICLE_RADIUS);
         particle.position.y = getRandomNumber(-10, 10);
-        particle.position.x = getRandomNumber(-30, 30);
+        particle.position.x = getRandomNumber(-50, 50);
         particle.position.z = getRandomNumber(-10, 0)
         particles.push(particle);
     }
@@ -35,7 +35,7 @@ export const initSnowSystem = (parent: HTMLElement): void => {
     renderer.setSize( window.innerWidth, window.innerHeight );
     parent.appendChild( renderer.domElement );
 
-    const snowParticles: THREE.Mesh[] = spawnSnowParticles(2000);
+    const snowParticles: THREE.Mesh[] = spawnSnowParticles(4000);
     scene.add(...snowParticles);
 
     camera.position.z = 5;
